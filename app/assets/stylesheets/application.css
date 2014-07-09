@@ -167,10 +167,82 @@ a:hover {
 
 /* --- CONTENT --- */
 
-.content {
+.ttt {
   width: 900px;
   margin: auto;
   background: #ccc;
+}
+
+/* --- TTT --- */
+
+.ttt > header {
+  width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.ttt > header > h1 {
+  display: block;
+  margin: auto;
+  width: 450px;
+  font-size: 48px;
+  font-style: bold;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.ttt > header > h4 {
+  width: 450px;
+  margin: auto;
+  padding: 20px;
+  font-size: 24px;
+  font-style: italic;
+  border-top: 2px solid #aaa;
+  text-align: center;
+}
+
+/*.ttt > .wrap {
+  width: 450px;
+  margin-left: 250px;
+}*/
+
+.ttt > .wrap > ul {
+  display: block;
+  margin: 20px auto 50px auto;
+  margin-left: 305px;
+  width: 300px;
+  background: #709DC4; /* Carolina Blue! */
+  border: 5px solid #000;
+}
+
+.ttt > .wrap > ul > li {
+  display: block;
+  float: left;
+  list-style: none;
+  width: 90px;
+  height: 90px;
+  background: #aaa;
+  border: 5px solid #000;
+}
+
+.ttt > .wrap > ul > li:hover {
+  background: transparent;
+}
+
+.ttt > .wrap > ul > li.x {
+  background: #709DC4;
+  color: #aaa;
+  font-size: 80px;
+  line-height: .95;
+  text-align: center;
+}
+
+.ttt > .wrap > ul > li.o {
+  background: red;
+  color: #aaa;
+  font-size: 80px;
+  line-height: .95;
+  text-align: center;
 }
 
 /* --- FOOTER --- */

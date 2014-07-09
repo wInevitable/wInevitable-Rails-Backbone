@@ -1,27 +1,3 @@
-<section class="ttt">
-  <header>
-    <h1>X's Versus O's</h1>
-    <h4>A Game of Tic Tac Toe</h4>
-  </header>
-
-  <div class="wrap">
-    <ul class="grid group">
-      <li></li>
-      <li></li>
-      <li></li>
-
-      <li></li>
-      <li></li>
-      <li></li>
-
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-</section>
-
-<script>
 (function(root) {
 
   var TTT = root.TTT = (root.TTT || {});
@@ -63,4 +39,3 @@ $(function() {
     var ui = new TTT.TTTUI(game, square, index).installClickListener();
   });
 });
-</script>

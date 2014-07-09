@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require _.js
 //= require underscore
 //= require backbone
 //= require w_inevitable
+//= require_tree ./ttt
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
