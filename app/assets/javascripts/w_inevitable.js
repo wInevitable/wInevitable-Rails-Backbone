@@ -1,12 +1,15 @@
-window.WInevitable = {
+window.wInevitable = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
+  initialize: function(options) {
+    var data = options.data;
+
+    new this.Routers.Router({
+      $rootEl: options.$rootEl
+    });
+
+    Backbone.history.start()
   }
 };
-
-$(document).ready(function(){
-  WInevitable.initialize();
-});

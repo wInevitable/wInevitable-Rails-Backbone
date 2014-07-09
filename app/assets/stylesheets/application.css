@@ -12,6 +12,16 @@
  *= require_tree .
  */
 
+/* --- STYLES
+
+BLUE: #003264
+GREY: #ccc
+BLACK #000
+WHITE: #fff
+
+ --- */
+
+
 /* --- RESET --- */
 
 html, body, header, footer, nav, h1, h4, ul, li {
@@ -95,6 +105,7 @@ a:hover {
 }
 
 .header > .header-nav > .links > li {
+  cursor: pointer;
   position: relative;
   display: block;
   padding: 5px 20px;
@@ -129,6 +140,8 @@ a:hover {
 .header > .header-nav > .links > li > .dropdown > li {
   cursor: pointer;
   padding: 10px 20px;
+  display: block;
+  width: 260px;
 }
 
 .header > .header-nav > .links > li > .dropdown > li:not(:last-child) {
@@ -150,6 +163,14 @@ a:hover {
 
 .header > .header-nav > .links > li > .dropdown > li:hover a {
   color: #fff;
+}
+
+/* --- CONTENT --- */
+
+.content {
+  width: 900px;
+  margin: auto;
+  background: #ccc;
 }
 
 /* --- FOOTER --- */
