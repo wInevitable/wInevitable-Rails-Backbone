@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  database: name_of_your_project_development
+  host: localhost
+  username: appacademy
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: wInevitable_test
+  pool: 5
+  username: appacademy
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: wInevitable_production
+  pool: 5
+  username: appacademy
+  password:
