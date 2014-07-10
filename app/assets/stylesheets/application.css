@@ -24,7 +24,7 @@ WHITE: #fff
 
 /* --- RESET --- */
 
-html, body, section, header, footer, nav, h1, h4, ul, li {
+html, body, section, header, footer, nav, h1, h4, h6, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
@@ -37,6 +37,7 @@ body {
   background: #ccc;
   color: #003264;
   font-size: 16px;
+  height: 100%;
   line-height: normal;
 }
 
@@ -51,6 +52,14 @@ a {
 
 a:hover {
   cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
 }
 
 /* --- UTILITIES --- */
@@ -139,7 +148,10 @@ a:hover {
   cursor: pointer;
   padding: 10px 20px;
   display: block;
-  width: 260px;
+}
+
+.header > .header-nav > .links > li > .dropdown > li > a {
+  display: block;
 }
 
 .header > .header-nav > .links > li > .dropdown > li:not(:last-child) {
@@ -165,23 +177,118 @@ a:hover {
 
 /* --- CONTENT --- */
 
+.home {
+  width: 900px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+}
+
+.home > h1 {
+
+}
+
+.home > ul {
+
+}
+
+.home > ul > li {
+
+}
+
+.home > ul > li > a {
+  width: 300px;
+}
+
+.home > ul > li > a > img {
+  width: 290px;
+  border: 5px solid #003264;
+}
+
+.summary {
+  width: 900px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+}
+
+.summary > article {
+}
+
+.summary > article > h1 {
+  width: 600px;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.summary > article > img {
+  float: right;
+  padding: 20px;
+  width: 200px;
+  height: auto;
+}
+
+.summary > article > p {
+  width: 860px;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.contact {
+  width: 900px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+}
+
+.contact > h1 {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.contact > ul {
+  padding: 20px;
+}
+
+.contact > ul > li {
+  border-bottom: 2px solid #ccc;
+  padding: 20px;
+}
+
+/* --- STAR TREK --- */
+
+.trek {
+  width: 600px;
+  margin: auto;
+  margin-top: 200px;
+  font-size: 48px;
+  text-align: center;
+}
+
 /* --- HANOI --- */
 
-.hanoi > header {
-  width: 600px;
+.hanoi {
+  width: 900px;
   margin: 50px auto;
-  font-family: verdana;
-  background: #ccc;
-  color: #003264;
-  line-height: normal;
-  text-align: center;
+  padding: 20px;
+}
+
+.hanoi > header {
 }
 
 .hanoi > header > h1 {
   display: block;
-  margin: 10px 0 0 0;
-  font-style: bold;
-  font-size: 40px;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 400px;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 2px solid #aaa;
 }
 
 .hanoi li {
@@ -193,6 +300,26 @@ a:hover {
   display: block;
   width: 600px;
   margin: 50px auto;
+  margin-top: 100px;
+}
+
+.hanoi > footer > h4 {
+  display: block;
+  padding: 20px 20px 0 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.hanoi > footer > h6 {
+  display: block;
+  padding: 20px 20px 0 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.hanoi > footer > h6 > a {
+    color: #000;
 }
 
 .hanoi > .towers {
@@ -255,10 +382,13 @@ a:hover {
 
 /* --- TTT --- */
 
-.ttt > header {
+.ttt {
   width: 900px;
-  margin: auto;
+  margin: 50px auto;
   padding: 20px;
+}
+
+.ttt > header {
 }
 
 .ttt > header > h1 {
@@ -266,7 +396,7 @@ a:hover {
   margin: auto;
   width: 400px;
   font-size: 48px;
-  font-style: bold;
+  font-weight: bold;
   padding: 20px 0;
   text-align: center;
 }
@@ -281,16 +411,10 @@ a:hover {
   text-align: center;
 }
 
-/*.ttt > .wrap {
-  width: 450px;
-  margin-left: 250px;
-}*/
-
 .ttt > ul {
   display: block;
   margin: 20px auto 50px auto;
   width: 300px;
-
   background: #709DC4; /* Carolina Blue! */
   border: 5px solid #000;
 }
@@ -325,10 +449,26 @@ a:hover {
   text-align: center;
 }
 
+.ttt > h6 {
+  display: block;
+  padding: 20px 20px 0 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ttt > h6 > a {
+  color: #000;
+}
+
 /* --- FOOTER --- */
 
 .footer {
   background: #003264;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  display: block;
 }
 
 .footer > .footer-wrap {
