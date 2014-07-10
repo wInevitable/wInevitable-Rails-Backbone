@@ -1,1 +1,42 @@
-<h1>Hanoi</h1>
+<section class="hanoi">
+  <header>
+    <h1 class="player">The Fall of Hanoi</h1>
+  </header>
+
+  <ul class="towers">
+    <ul class="one">
+      <li class="small"></li>
+      <li class="medium"></li>
+      <li class="large"></li>
+    </ul>
+    <ul class="two">
+      <li class="hidden"></li>
+      <li class="hidden"></li>
+      <li class="hidden"></li>
+    </ul>
+    <ul class="three">
+      <li class="hidden"></li>
+      <li class="hidden"></li>
+      <li class="hidden"></li>
+    </ul>
+  </ul>
+  <ul class="bases">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+  </ul>
+  <footer>
+    <h4>Click on a Tower or Boulder to select a piece to move.</h4>
+    <h4>Then click on a Destination Tower to move your piece.</h4>
+  </footer>
+</section>
+
+<script>
+  $(function() {
+    game = new Hanoi.Game();
+
+    $(".hanoi li").each(function(index, block) {
+      new Hanoi.HanoiUI(game, block, index).installClickListener();
+    });
+  });
+</script>

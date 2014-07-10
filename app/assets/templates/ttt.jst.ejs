@@ -4,7 +4,6 @@
     <h4>A Game of Tic Tac Toe</h4>
   </header>
 
-  <div class="wrap">
     <ul class="grid group">
       <li></li>
       <li></li>
@@ -18,49 +17,13 @@
       <li></li>
       <li></li>
     </ul>
-  </div>
 </section>
 
 <script>
-(function(root) {
-
-  var TTT = root.TTT = (root.TTT || {});
-
-  TTTUI = TTT.TTTUI = function(game, domEl, index) {
-    this.game = game;
-    this.$domEl = $(domEl);
-    this.coords = [ Math.floor(index/3), index%3 ];
-
-  };
-
-  TTTUI.prototype.installClickListener = function() {
-    this.$domEl.on("click", this.handleClick.bind(this));
-  };
-
-  TTTUI.prototype.handleClick = function(){
-    if (game.handleInput(this.coords)){
-
-      this.$domEl.html(this.game.player);
-      this.$domEl.addClass(this.game.player);
-
-      if (game.winner()) {
-        var mark = ((game.winner() == "x") ? "O" : "X");
-        alert("Congratulations! " + mark + "'s have won the game!");
-        location.reload();
-      }
-      else if (game.draw()) {
-        alert("We have a draw! Try Again.")
-        location.reload();
-      }
-    }
-  };
-
-})(this);
-
-$(function() {
-  game = new TTT.Game();
-  $(".grid li").each(function(index, square) {
-    var ui = new TTT.TTTUI(game, square, index).installClickListener();
+  $(function() {
+    game = new TTT.Game();
+    $(".grid li").each(function(index, square) {
+      var ui = new TTT.TTTUI(game, square, index).installClickListener();
+    });
   });
-});
 </script>

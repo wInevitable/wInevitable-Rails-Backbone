@@ -17,6 +17,7 @@
 //= require backbone
 //= require w_inevitable
 //= require_tree ./ttt
+//= require_tree ./hanoi
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

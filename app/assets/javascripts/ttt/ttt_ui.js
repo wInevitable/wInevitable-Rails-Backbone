@@ -32,10 +32,3 @@
   };
 
 })(this);
-
-$(function() {
-  game = new TTT.Game();
-  $(".grid li").each(function(index, square) {
-    var ui = new TTT.TTTUI(game, square, index).installClickListener();
-  });
-});

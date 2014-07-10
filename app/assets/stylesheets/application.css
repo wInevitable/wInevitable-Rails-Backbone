@@ -24,7 +24,7 @@ WHITE: #fff
 
 /* --- RESET --- */
 
-html, body, header, footer, nav, h1, h4, ul, li {
+html, body, section, header, footer, nav, h1, h4, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
@@ -75,8 +75,6 @@ a:hover {
 .header > .header-nav {
   position: relative;
   display: block;
-  width: 100%;
-  height: 30%;
   background: #fff;
 }
 
@@ -167,10 +165,92 @@ a:hover {
 
 /* --- CONTENT --- */
 
-.ttt {
-  width: 900px;
-  margin: auto;
+/* --- HANOI --- */
+
+.hanoi > header {
+  width: 600px;
+  margin: 50px auto;
+  font-family: verdana;
   background: #ccc;
+  color: #003264;
+  line-height: normal;
+  text-align: center;
+}
+
+.hanoi > header > h1 {
+  display: block;
+  margin: 10px 0 0 0;
+  font-style: bold;
+  font-size: 40px;
+}
+
+.hanoi li {
+  background: #aaa;
+  border-radius: 5px;
+}
+
+.hanoi > footer {
+  display: block;
+  width: 600px;
+  margin: 50px auto;
+}
+
+.hanoi > .towers {
+  width: 600px;
+  margin: auto auto;
+}
+
+.hanoi > .towers ul {
+  width: 200px;
+  float: left;
+}
+
+.hanoi > .towers:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.hanoi > .bases {
+  display: block;
+  width: 600px;
+  margin: 0 auto 50px auto;
+}
+
+.hanoi > .towers li {
+  display: block;
+  height: 90px;
+  width: 140px;
+  border: 5px solid black;
+  margin: auto auto;
+}
+
+.hanoi > .towers .small {
+  width: 40px;
+}
+
+.hanoi > .towers .medium {
+  width: 90px;
+}
+
+.hanoi > .towers .large {
+}
+
+.hanoi > .towers .hidden {
+  border: 5px solid transparent;
+  background: transparent;
+}
+
+.hanoi > .bases li {
+  display: block;
+  height: 90px;
+  width: 190px;
+  border: 5px solid black;
+  float: left;
+  text-align: center;
+  font-style: bold;
+  font-size: 40px;
+  line-height: 2;
 }
 
 /* --- TTT --- */
@@ -184,7 +264,7 @@ a:hover {
 .ttt > header > h1 {
   display: block;
   margin: auto;
-  width: 450px;
+  width: 400px;
   font-size: 48px;
   font-style: bold;
   padding: 20px 0;
@@ -192,7 +272,7 @@ a:hover {
 }
 
 .ttt > header > h4 {
-  width: 450px;
+  width: 400px;
   margin: auto;
   padding: 20px;
   font-size: 24px;
@@ -206,16 +286,16 @@ a:hover {
   margin-left: 250px;
 }*/
 
-.ttt > .wrap > ul {
+.ttt > ul {
   display: block;
   margin: 20px auto 50px auto;
-  margin-left: 305px;
   width: 300px;
+
   background: #709DC4; /* Carolina Blue! */
   border: 5px solid #000;
 }
 
-.ttt > .wrap > ul > li {
+.ttt > ul > li {
   display: block;
   float: left;
   list-style: none;
@@ -225,11 +305,11 @@ a:hover {
   border: 5px solid #000;
 }
 
-.ttt > .wrap > ul > li:hover {
+.ttt > ul > li:hover {
   background: transparent;
 }
 
-.ttt > .wrap > ul > li.x {
+.ttt > ul > li.x {
   background: #709DC4;
   color: #aaa;
   font-size: 80px;
@@ -237,7 +317,7 @@ a:hover {
   text-align: center;
 }
 
-.ttt > .wrap > ul > li.o {
+.ttt > ul > li.o {
   background: red;
   color: #aaa;
   font-size: 80px;
@@ -252,14 +332,13 @@ a:hover {
 }
 
 .footer > .footer-wrap {
-  width: 900px;
+  width: 500px;
   margin: auto;
 }
 
 .footer > .footer-wrap > .footer-links {
-  float: right;
   margin: auto;
-  padding: 10px 200px;
+
 }
 
 .footer > .footer-wrap > .footer-links > li {
