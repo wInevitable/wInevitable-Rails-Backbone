@@ -1,4 +1,22 @@
 <section class="trek">
   <h1>Star Trek</h1>
   <h4>Coming Soon!</h4>
+
+  <script>
+    $(function() {
+      var imagePreloader = new Preloader.ImagePreloader({
+        background: 'images/lightspeed.jpg',
+        bullet: "images/laser.png",
+        ship: "images/ship.png",
+        asteroid: "images/asteroid.png"
+      }, function(images) {
+        var canvas = $("<canvas width='" + StarTrek.Game.DIM_X +
+                      "' height='" + StarTrek.Game.DIM_Y + "'></canvas>");
+        $('body').append(canvas);
+        var ctx = canvas.get(0).getContext("2d");
+        var game = StarTrek.Game.new(images);
+        new StarTrek.GameView(game, ctx, images).start();
+      });
+    });
+  </script>
 </section>

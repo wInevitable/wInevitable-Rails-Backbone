@@ -14,10 +14,13 @@
 //= require jquery_ujs
 //= require _.js
 //= require underscore
+//= require keymaster
+//= require preloader
 //= require backbone
 //= require w_inevitable
 //= require_tree ./ttt
 //= require_tree ./hanoi
+//= require_tree ./trek
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
