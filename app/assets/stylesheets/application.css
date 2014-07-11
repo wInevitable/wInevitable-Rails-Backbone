@@ -289,10 +289,32 @@ em {
 
 .trek {
   width: 900px;
-  margin: auto;
-  margin-top: 200px;
-  font-size: 48px;
+  margin: 50px auto;
+  padding: 20px;
   text-align: center;
+}
+
+.trek > h1 {
+  display: block;
+  margin: auto;
+  width: 400px;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 20px 0;
+  border-bottom: 2px solid #aaa;
+}
+
+.trek > h4 {
+  width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.trek > .canvas {
+  border: 5px solid #003264;
+  margin-bottom: 20px;
 }
 
 /* --- HANOI --- */

@@ -145,3 +145,335 @@
   };
 
 })(this);
+
+"use strict";
+
+(function (root){
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
+
+  var MovingObject = StarTrek.MovingObject =
+    function(options) {
+      this._id = options._id || Math.random();
+      this.pos = options.pos;
+      this.vel = options.vel;
+      this.radius = options.radius;
+      this.color = options.color;
+      this.game = options.game;
+      this.image = options.image;
+  };
+
+  MovingObject.prototype.collideWith = function (otherObject) {
+  };
+
+  MovingObject.prototype.draw = function(ctx) {
+    ctx.save();
+    ctx.translate(this.pos[0], this.pos[1]);
+    ctx.drawImage(this.image, 0 - this.image.width / 2, 0 - this.image.height / 2);
+
+    ctx.restore();
+
+    // ctx.fillStyle = this.color;
+    //
+    // ctx.beginPath();
+    // ctx.arc(
+    //   this.pos[0],
+    //   this.pos[1],
+    //   this.radius,
+    //   0,
+    //   2 * Math.PI,
+    //   true
+    // );
+    //
+    // ctx.fill();
+  };
+
+   MovingObject.prototype.isCollidedWith = function(otherObject) {
+     var centerDist = StarTrek.Utilities.dist(this.pos, otherObject.pos);
+     return centerDist < (this.radius + otherObject.radius);
+   };
+
+   MovingObject.prototype.isWrappable = true;
+
+   MovingObject.prototype.move = function(numTicks) {
+     this.pos = [
+       (this.pos[0] + numTicks * this.vel[0]),
+       (this.pos[1] + numTicks * this.vel[1])
+     ];
+
+     if (this.game.isOutOfBounds(this.pos)) {
+       if (this.isWrappable) {
+         this.wrap();
+       }
+       else {
+         this.remove();
+       }
+     }
+   };
+
+   MovingObject.prototype.remove = function() {
+     this.game.remove(this)
+   };
+
+   function wrap (coord, max) {
+     if (coord < 0) {
+       return max - (coord % max);
+     }
+     else if (coord > max) {
+       return coord % max;
+     }
+     else {
+       return coord;
+     }
+   };
+
+   MovingObject.prototype.wrap = function() {
+     this.pos[0] = wrap(this.pos[0], StarTrek.Game.DIM_X);
+     this.pos[1] = wrap(this.pos[1], StarTrek.Game.DIM_Y);
+   };
+
+   // MovingObject.prototype.toJSON - save game feature
+
+})(this);
+
+(function (root){
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
+
+  var Asteroid = StarTrek.Asteroid = function(options) {
+    options.radius = Asteroid.RADIUS;
+    options.color = Asteroid.COLOR;
+    StarTrek.MovingObject.call(this, options);
+  };
+
+  Asteroid.COLOR = 'red';
+  Asteroid.RADIUS = 25;
+  Asteroid.SPEED = 4;
+
+  Asteroid.randomAsteroid = function(game, image){
+    return new Asteroid({
+      pos: game.randomPosition(),
+      vel: StarTrek.Utilities.randomVec(Asteroid.SPEED),
+      game: game,
+      image: image
+    });
+  };
+
+
+  StarTrek.inherits = function (ChildClass, BaseClass) {
+    function Surrogate () { this.constructor = ChildClass };
+    Surrogate.prototype = BaseClass.prototype;
+    ChildClass.prototype = new Surrogate();
+  };
+
+  StarTrek.inherits(Asteroid, StarTrek.MovingObject);
+
+  Asteroid.prototype.collideWith = function(otherObject) {
+    if (otherObject.constructor !== StarTrek.Ship) {
+      return;
+    }
+
+    otherObject.relocate();
+  };
+
+})(this);
+
+(function(root) {
+   var StarTrek = root.StarTrek = (root.StarTrek || {});
+
+   function randomColor() {
+     //generate a random hex code
+     return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+   }
+
+   var Ship = StarTrek.Ship = function(options) {
+     options.radius = StarTrek.Ship.RADIUS;
+     options.vel = options.vel || [0, 0];
+     options.color = options.color || randomColor();
+
+     StarTrek.MovingObject.call(this, options);
+   };
+
+
+   StarTrek.inherits = function (ChildClass, BaseClass) {
+     function Surrogate () { this.constructor = ChildClass };
+     Surrogate.prototype = BaseClass.prototype;
+     ChildClass.prototype = new Surrogate();
+   };
+
+   StarTrek.inherits(Ship, StarTrek.MovingObject);
+
+   Ship.COLOR = 'Black';
+   Ship.RADIUS = 15;
+
+   Ship.prototype.power = function(impulse){
+     this.vel[0] += impulse[0];
+     this.vel[1] += impulse[1];
+   };
+
+   Ship.prototype.relocate = function() {
+     this.pos = this.game.randomPosition();
+     this.vel = [0, 0];
+   };
+
+   Ship.prototype.fireBullet = function() {
+     var norm = StarTrek.Utilities.norm(this.vel);
+
+     if (norm == 0) {
+       return
+     }
+     else {
+       var relVel = StarTrek.Utilities.scale(
+         StarTrek.Utilities.dir(this.vel),
+         StarTrek.Bullet.SPEED
+       );
+
+       var bulletVel = [
+         relVel[0] + this.vel[0], relVel[1] + this.vel[1]
+       ];
+
+       var bullet = new StarTrek.Bullet({
+         pos: this.pos,
+         vel: bulletVel,
+         color: this.color,
+         game: this.game,
+         image: this.game.images.bullet
+       });
+
+       this.game.add(bullet);
+     }
+   };
+
+})(this);
+
+(function(root) {
+   var StarTrek = root.StarTrek = (root.StarTrek || {});
+
+   var Bullet = StarTrek.Bullet = function(options) {
+     options.radius = Bullet.RADIUS;
+     options.color = Bullet.COLOR;
+
+     StarTrek.MovingObject.call(this, options);
+   };
+
+   Bullet.COLOR = '#fff';
+   Bullet.RADIUS = 2;
+   Bullet.SPEED = 15;
+
+   StarTrek.inherits = function (ChildClass, BaseClass) {
+     function Surrogate () { this.constructor = ChildClass };
+     Surrogate.prototype = BaseClass.prototype;
+     ChildClass.prototype = new Surrogate();
+   };
+
+   StarTrek.inherits(Bullet, StarTrek.MovingObject);
+
+   Bullet.prototype.collideWith = function(otherObject) {
+     if (otherObject.constructor !== StarTrek.Asteroid) {
+       return;
+     }
+
+     this.remove();
+     otherObject.remove();
+   };
+
+   Bullet.prototype.isWrappable = false;
+})(this);
+
+(function(root) {
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
+
+  var Utilities = StarTrek.Utilities = {};
+
+  var dir = Utilities.dir = function (vec) {
+    var norm = Utilities.norm(vec);
+    return Utilities.scale(vec, 1 / norm);
+  };
+
+  var dist = Utilities.dist = function (pos1, pos2) {
+    return Math.sqrt(
+      Math.pow(pos1[0] - pos2[0], 2) + Math.pow(pos1[1] - pos2[1], 2)
+    );
+  };
+
+  var norm = Utilities.norm = function (vec) {
+    return Utilities.dist([0, 0], vec);
+  };
+
+  var randomVec = Utilities.randomVec = function (length) {
+    var x = random() - 0.5;
+    var y = random() - 0.5;
+
+    var vec = [x, y];
+    return Utilities.scale(vec, length / Utilities.norm(vec));
+  };
+
+  var scale = Utilities.scale = function (vec, m) {
+    return [vec[0] * m, vec[1] * m];
+  };
+
+  var inherits = Utilities.inherits = function (ChildClass, BaseClass) {
+    function Surrogate () { this.constructor = ChildClass };
+    Surrogate.prototype = BaseClass.prototype;
+    ChildClass.prototype = new Surrogate();
+  };
+
+  Utilities._seed = 0;
+
+  var random = Utilities.random = function(max, min) {
+    max = max || 1;
+    min = min || 0;
+
+    Utilities._seed = (Utilities._seed * 9301 + 49297) % 233280;
+    var rnd = Utilities._seed / 233280;
+
+    return min + rnd * (max - min);
+  };
+
+})(this);
+
+(function(root) {
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
+
+  var GameView = StarTrek.GameView = function(game, ctx, images) {
+    this.ctx = ctx;
+    this.images = images;
+    this.game = game;
+    this.ship = this.game.addShip(images.ship);
+    this.timerId = null;
+  };
+
+  GameView.MOVES = {
+    'w': [0, -1],
+    'a': [-1, 0],
+    's': [0, 1],
+    'd': [1, 0]
+  };
+
+  GameView.prototype.bindKeyHandlers = function() {
+    var ship = this.ship;
+
+    Object.keys(GameView.MOVES).forEach(function(k) {
+      var move = GameView.MOVES[k];
+      key(k, function() { ship.power(move); });
+    });
+
+    key("space", function() { ship.fireBullet() });
+  };
+
+  GameView.prototype.start = function(){
+     var gameView = this;
+
+     this.timerId = setInterval(
+       function() {
+         gameView.game.step();
+         gameView.game.draw(gameView.ctx);
+       }, 1000 / StarTrek.Game.FPS
+     );
+
+     this.bindKeyHandlers();
+  };
+
+  GameView.prototype.stop = function() {
+    clearInterval(this.timerId);
+  };
+
+})(this);

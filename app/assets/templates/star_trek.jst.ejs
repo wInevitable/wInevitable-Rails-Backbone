@@ -1,18 +1,20 @@
 <section class="trek">
   <h1>Star Trek</h1>
-  <h4>Coming Soon!</h4>
+  <h4>Navigate Your Way Through The Asteroid Field!</h4>
 
   <script>
-    $(function() {
+    $(document).ready(function() {
       var imagePreloader = new Preloader.ImagePreloader({
-        background: 'images/lightspeed.jpg',
-        bullet: "images/laser.png",
-        ship: "images/ship.png",
-        asteroid: "images/asteroid.png"
+        background: '/images/lightspeed.jpg',
+        bullet: "/images/laser.png",
+        ship: "/images/ship.png",
+        asteroid: "/images/asteroid.png"
       }, function(images) {
-        var canvas = $("<canvas width='" + StarTrek.Game.DIM_X +
+
+        var canvas = $("<canvas class='canvas' width='" + StarTrek.Game.DIM_X +
                       "' height='" + StarTrek.Game.DIM_Y + "'></canvas>");
-        $('body').append(canvas);
+        $('.trek').append(canvas);
+        $('.trek').append($("<h4 class='instructions'>Press <strong>'w, a, s, and d'</strong> to move. Spacebar to fire.</h4>"))
         var ctx = canvas.get(0).getContext("2d");
         var game = StarTrek.Game.new(images);
         new StarTrek.GameView(game, ctx, images).start();
