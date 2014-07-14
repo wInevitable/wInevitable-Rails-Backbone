@@ -13,3 +13,4 @@ TODO
 - Stick Footer to Bottom of the Page
 - Add more projects!
 - Fix styling on Home Page to properly display projects
+- Google Analytics
