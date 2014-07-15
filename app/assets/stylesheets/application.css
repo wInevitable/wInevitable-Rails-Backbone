@@ -287,14 +287,14 @@ em {
 
 /* --- STAR TREK --- */
 
-.trek {
+.collision {
   width: 900px;
   margin: 50px auto;
   padding: 20px;
   text-align: center;
 }
 
-.trek > h1 {
+.collision > h1 {
   display: block;
   margin: auto;
   width: 400px;
@@ -304,7 +304,7 @@ em {
   border-bottom: 2px solid #aaa;
 }
 
-.trek > h4 {
+.collision > h4 {
   width: 600px;
   margin: auto;
   padding: 20px;
@@ -312,7 +312,7 @@ em {
   font-style: italic;
 }
 
-.trek > .canvas {
+.collision > .canvas {
   border: 5px solid #003264;
   margin-bottom: 20px;
 }

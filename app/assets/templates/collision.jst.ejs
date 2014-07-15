@@ -1,0 +1,24 @@
+<section class="collision">
+  <h1>Collision</h1>
+  <h4>Navigate Your Way Through The Asteroid Field!</h4>
+
+  <script>
+    $(document).ready(function() {
+      var imagePreloader = new Preloader.ImagePreloader({
+        background: '/images/lightspeed.jpg',
+        bullet: "/images/laser.png",
+        ship: "/images/ship.png",
+        asteroid: "/images/asteroid.png"
+      }, function(images) {
+
+        var canvas = $("<canvas class='canvas' width='" + Collision.Game.DIM_X +
+                      "' height='" + Collision.Game.DIM_Y + "'></canvas>");
+        $('.trek').append(canvas);
+        $('.trek').append($("<h4 class='instructions'>Press <strong>'w, a, s, and d'</strong> to move. Spacebar to fire.</h4>"))
+        var ctx = canvas.get(0).getContext("2d");
+        var game = Collision.Game.new(images);
+        new Collision.GameView(game, ctx, images).start();
+      });
+    });
+  </script>
+</section>

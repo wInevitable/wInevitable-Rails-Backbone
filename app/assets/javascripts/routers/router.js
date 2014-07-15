@@ -6,7 +6,7 @@ wInevitable.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'summary': 'summary',
-    'startrek': 'startrek',
+    'collision': 'collision',
     'tic': 'tic',
     'hanoi': 'hanoi',
     'contact': 'contact'
@@ -22,9 +22,9 @@ wInevitable.Routers.Router = Backbone.Router.extend({
     this._swapView(summaryView);
   },
 
-  startrek: function() {
-    var starTrekView = new wInevitable.Views.StarTrek();
-    this._swapView(starTrekView);
+  collision: function() {
+    var collisionView = new wInevitable.Views.CollisionView();
+    this._swapView(collisionView);
   },
 
   tic: function() {
