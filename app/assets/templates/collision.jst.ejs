@@ -13,8 +13,9 @@
 
         var canvas = $("<canvas class='canvas' width='" + Collision.Game.DIM_X +
                       "' height='" + Collision.Game.DIM_Y + "'></canvas>");
-        $('.trek').append(canvas);
-        $('.trek').append($("<h4 class='instructions'>Press <strong>'w, a, s, and d'</strong> to move. Spacebar to fire.</h4>"))
+        $('.collision').append(canvas);
+        $('.collision').append($("<h4 class='instructions'>Press <strong>'w, a, s, and d'</strong> to move. Spacebar to fire.</h4>"));
+        $('.collision').append($("<h6 class='github'><a href="https://github.com/wInevitable/Collision">GitHub Repo</a></h6>"));
         var ctx = canvas.get(0).getContext("2d");
         var game = Collision.Game.new(images);
         new Collision.GameView(game, ctx, images).start();

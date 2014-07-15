@@ -200,8 +200,15 @@ em {
 }
 
 .home h4 {
-  display: block;
+  display: inline-block;
   font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.home h6 {
+  display: inline-block;
+  font-size: 12px;
   font-weight: bold;
   margin: 20px 0;
 }
@@ -308,13 +315,27 @@ em {
   width: 600px;
   margin: auto;
   padding: 20px;
-  font-size: 24px;
+  font-size: 18px;
   font-style: italic;
 }
 
 .collision > .canvas {
   border: 5px solid #003264;
   margin-bottom: 20px;
+}
+
+.collision > h6 {
+  width: 600px;
+  margin: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.collision > h6 > a {
+    color: #000;
 }
 
 /* --- HANOI --- */
