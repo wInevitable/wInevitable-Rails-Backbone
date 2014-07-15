@@ -14,7 +14,7 @@
         var canvas = $("<canvas class='canvas' width='" + StarTrek.Game.DIM_X +
                       "' height='" + StarTrek.Game.DIM_Y + "'></canvas>");
         $('.collision').append(canvas);
-        $('.collision').append($("<h4 class='instructions'>Press <strong>'w, a, s, and d'</strong> to move. Spacebar to fire.</h4>"))
+        $('.collision').append($("<h4 class='instructions'>Press <strong>'w, a, s, and d'</strong> to move. Spacebar to fire.</h4>"));
         var ctx = canvas.get(0).getContext("2d");
         var game = StarTrek.Game.new(images);
         new StarTrek.GameView(game, ctx, images).start();
