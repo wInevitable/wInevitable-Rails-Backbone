@@ -2,9 +2,9 @@
 
 (function(root) {
 
-  var Collision = root.Collision = (root.Collision || {});
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
 
-  var Game = Collision.Game = function(images) {
+  var Game = StarTrek.Game = function(images) {
     this.images = images;
     this.asteroids = [];
     this.bullets = [];
@@ -28,13 +28,13 @@
   }
 
   Game.prototype.add = function(object) {
-    if (object.constructor == Collision.Asteroid) {
+    if (object.constructor == StarTrek.Asteroid) {
       this.asteroids.push(object);
     }
-    else if (object.constructor == Collision.Bullet) {
+    else if (object.constructor == StarTrek.Bullet) {
       this.bullets.push(object);
     }
-    else if (object.constructor == Collision.Ship) {
+    else if (object.constructor == StarTrek.Ship) {
       this.ships.push(object);
     }
     else {
@@ -44,12 +44,12 @@
 
   Game.prototype.addAsteroids = function (numAsteroids, image) {
     for (var i = 0; i < numAsteroids; i++) {
-      this.add(Collision.Asteroid.randomAsteroid(this, image));
+      this.add(StarTrek.Asteroid.randomAsteroid(this, image));
     }
   };
 
   Game.prototype.addShip = function(image) {
-    var ship = new Collision.Ship({
+    var ship = new StarTrek.Ship({
       pos: this.randomPosition(),
       game: this,
       image: image
@@ -118,20 +118,20 @@
 
   Game.prototype.randomPosition = function() {
     return [
-      Game.DIM_X * Collision.Utilities.random(),
-      Game.DIM_Y * Collision.Utilities.random()
+      Game.DIM_X * StarTrek.Utilities.random(),
+      Game.DIM_Y * StarTrek.Utilities.random()
     ];
   };
 
   Game.prototype.remove = function(object) {
-    if (object.constructor == Collision.Bullet) {
+    if (object.constructor == StarTrek.Bullet) {
       this.bullets.splice(this.bullets.indexOf(object), 1);
     }
-    else if (object.constructor == Collision.Asteroid) {
+    else if (object.constructor == StarTrek.Asteroid) {
       var index = this.asteroids.indexOf(object);
-      this.asteroids[index] = Collision.Asteroid.randomAsteroid(this, this.images.asteroid);
+      this.asteroids[index] = StarTrek.Asteroid.randomAsteroid(this, this.images.asteroid);
     }
-    else if (object.constructor == Collision.Ship) {
+    else if (object.constructor == StarTrek.Ship) {
       this.shis.splice(this.ships.indexOf(object), 1);
     }
     else {
@@ -149,9 +149,9 @@
 "use strict";
 
 (function (root){
-  var Collision = root.Collision = (root.Collision || {});
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
 
-  var MovingObject = Collision.MovingObject =
+  var MovingObject = StarTrek.MovingObject =
     function(options) {
       this._id = options._id || Math.random();
       this.pos = options.pos;
@@ -188,7 +188,7 @@
   };
 
    MovingObject.prototype.isCollidedWith = function(otherObject) {
-     var centerDist = Collision.Utilities.dist(this.pos, otherObject.pos);
+     var centerDist = StarTrek.Utilities.dist(this.pos, otherObject.pos);
      return centerDist < (this.radius + otherObject.radius);
    };
 
@@ -227,21 +227,21 @@
    };
 
    MovingObject.prototype.wrap = function() {
-     this.pos[0] = wrap(this.pos[0], Collision.Game.DIM_X);
-     this.pos[1] = wrap(this.pos[1], Collision.Game.DIM_Y);
+     this.pos[0] = wrap(this.pos[0], StarTrek.Game.DIM_X);
+     this.pos[1] = wrap(this.pos[1], StarTrek.Game.DIM_Y);
    };
 
-   // MovingObject.prototype.toJSON - save game feature to implement
+   // MovingObject.prototype.toJSON - save game feature
 
 })(this);
 
 (function (root){
-  var Collision = root.Collision = (root.Collision || {});
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
 
-  var Asteroid = Collision.Asteroid = function(options) {
+  var Asteroid = StarTrek.Asteroid = function(options) {
     options.radius = Asteroid.RADIUS;
     options.color = Asteroid.COLOR;
-    Collision.MovingObject.call(this, options);
+    StarTrek.MovingObject.call(this, options);
   };
 
   Asteroid.COLOR = 'red';
@@ -251,23 +251,23 @@
   Asteroid.randomAsteroid = function(game, image){
     return new Asteroid({
       pos: game.randomPosition(),
-      vel: Collision.Utilities.randomVec(Asteroid.SPEED),
+      vel: StarTrek.Utilities.randomVec(Asteroid.SPEED),
       game: game,
       image: image
     });
   };
 
 
-  Collision.inherits = function (ChildClass, BaseClass) {
+  StarTrek.inherits = function (ChildClass, BaseClass) {
     function Surrogate () { this.constructor = ChildClass };
     Surrogate.prototype = BaseClass.prototype;
     ChildClass.prototype = new Surrogate();
   };
 
-  Collision.inherits(Asteroid, Collision.MovingObject);
+  StarTrek.inherits(Asteroid, StarTrek.MovingObject);
 
   Asteroid.prototype.collideWith = function(otherObject) {
-    if (otherObject.constructor !== Collision.Ship) {
+    if (otherObject.constructor !== StarTrek.Ship) {
       return;
     }
 
@@ -277,29 +277,29 @@
 })(this);
 
 (function(root) {
-   var Collision = root.Collision = (root.Collision || {});
+   var StarTrek = root.StarTrek = (root.StarTrek || {});
 
    function randomColor() {
      //generate a random hex code
      return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
    }
 
-   var Ship = Collision.Ship = function(options) {
-     options.radius = Collision.Ship.RADIUS;
+   var Ship = StarTrek.Ship = function(options) {
+     options.radius = StarTrek.Ship.RADIUS;
      options.vel = options.vel || [0, 0];
      options.color = options.color || randomColor();
 
-     Collision.MovingObject.call(this, options);
+     StarTrek.MovingObject.call(this, options);
    };
 
 
-   Collision.inherits = function (ChildClass, BaseClass) {
+   StarTrek.inherits = function (ChildClass, BaseClass) {
      function Surrogate () { this.constructor = ChildClass };
      Surrogate.prototype = BaseClass.prototype;
      ChildClass.prototype = new Surrogate();
    };
 
-   Collision.inherits(Ship, Collision.MovingObject);
+   StarTrek.inherits(Ship, StarTrek.MovingObject);
 
    Ship.COLOR = 'Black';
    Ship.RADIUS = 15;
@@ -315,22 +315,22 @@
    };
 
    Ship.prototype.fireBullet = function() {
-     var norm = Collision.Utilities.norm(this.vel);
+     var norm = StarTrek.Utilities.norm(this.vel);
 
      if (norm == 0) {
        return
      }
      else {
-       var relVel = Collision.Utilities.scale(
-         Collision.Utilities.dir(this.vel),
-         Collision.Bullet.SPEED
+       var relVel = StarTrek.Utilities.scale(
+         StarTrek.Utilities.dir(this.vel),
+         StarTrek.Bullet.SPEED
        );
 
        var bulletVel = [
          relVel[0] + this.vel[0], relVel[1] + this.vel[1]
        ];
 
-       var bullet = new Collision.Bullet({
+       var bullet = new StarTrek.Bullet({
          pos: this.pos,
          vel: bulletVel,
          color: this.color,
@@ -345,29 +345,29 @@
 })(this);
 
 (function(root) {
-   var Collision = root.Collision = (root.Collision || {});
+   var StarTrek = root.StarTrek = (root.StarTrek || {});
 
-   var Bullet = Collision.Bullet = function(options) {
+   var Bullet = StarTrek.Bullet = function(options) {
      options.radius = Bullet.RADIUS;
      options.color = Bullet.COLOR;
 
-     Collision.MovingObject.call(this, options);
+     StarTrek.MovingObject.call(this, options);
    };
 
    Bullet.COLOR = '#fff';
    Bullet.RADIUS = 2;
    Bullet.SPEED = 15;
 
-   Collision.inherits = function (ChildClass, BaseClass) {
+   StarTrek.inherits = function (ChildClass, BaseClass) {
      function Surrogate () { this.constructor = ChildClass };
      Surrogate.prototype = BaseClass.prototype;
      ChildClass.prototype = new Surrogate();
    };
 
-   Collision.inherits(Bullet, Collision.MovingObject);
+   StarTrek.inherits(Bullet, StarTrek.MovingObject);
 
    Bullet.prototype.collideWith = function(otherObject) {
-     if (otherObject.constructor !== Collision.Asteroid) {
+     if (otherObject.constructor !== StarTrek.Asteroid) {
        return;
      }
 
@@ -379,9 +379,9 @@
 })(this);
 
 (function(root) {
-  var Collision = root.Collision = (root.Collision || {});
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
 
-  var Utilities = Collision.Utilities = {};
+  var Utilities = StarTrek.Utilities = {};
 
   var dir = Utilities.dir = function (vec) {
     var norm = Utilities.norm(vec);
@@ -431,9 +431,9 @@
 })(this);
 
 (function(root) {
-  var Collision = root.Collision = (root.Collision || {});
+  var StarTrek = root.StarTrek = (root.StarTrek || {});
 
-  var GameView = Collision.GameView = function(game, ctx, images) {
+  var GameView = StarTrek.GameView = function(game, ctx, images) {
     this.ctx = ctx;
     this.images = images;
     this.game = game;
@@ -466,7 +466,7 @@
        function() {
          gameView.game.step();
          gameView.game.draw(gameView.ctx);
-       }, 1000 / Collision.Game.FPS
+       }, 1000 / StarTrek.Game.FPS
      );
 
      this.bindKeyHandlers();
