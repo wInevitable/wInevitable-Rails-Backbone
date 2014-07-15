@@ -6,9 +6,9 @@ A small Backbone implementation. Features descriptions and links to my latest pr
 TODO
 =========
 
-- Add GitHub Repo links
-- Change slogan
-- Change 'StarTrek' name and links to 'Collision'
+- Add GitHub Repo links - Collision Needs 1
+- ~~Change slogan~~
+- ~~Change 'StarTrek' name and links to 'Collision'~~
 - List collaborators with info
 - Stick Footer to Bottom of the Page
 - Add more projects!
