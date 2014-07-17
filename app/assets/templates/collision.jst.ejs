@@ -5,8 +5,7 @@
   <script>
     $(document).ready(function() {
       $('body').keypress(function(event) {
-        var code = event.keyCode;
-        if (code == 32 || code == 65 || code == 68 || code == 83 || code == 87) {
+        if ([32, 65, 68, 83, 87].indexOf(event.keyCode) > -1) {
           event.preventDefault();
         }
       });
