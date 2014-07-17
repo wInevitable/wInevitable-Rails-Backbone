@@ -10,7 +10,7 @@ TODO
 - ~~Change slogan~~
 - ~~Change 'StarTrek' name and links to 'Collision'~~
 - List collaborators with info
-- List LinkedIn with contact info
+- ~~List LinkedIn with contact info~~
 - Stick Footer to Bottom of the Page
 - Add more projects!
 - Fix styling on Home Page to properly display projects
