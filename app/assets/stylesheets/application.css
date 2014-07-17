@@ -556,8 +556,8 @@ em {
 .footer > .footer-wrap > .footer-links > li {
   position: relative;
   cursor: pointer;
-  float: left;
-  display: block;
+  
+  display: inline-block;
   padding: 0px 30px;
   margin: 20px auto;
 }
