@@ -291,6 +291,10 @@ em {
   padding: 20px;
 }
 
+.contact > ul > li > info {
+  float: right;
+}
+
 /* --- STAR TREK --- */
 
 .collision {
@@ -542,17 +546,12 @@ em {
 }
 
 .footer > .footer-wrap {
-  width: 800px;
+  width: 900px;
   margin: auto;
-}
-
-.footer > .footer-wrap info {
-  float: right;
 }
 
 .footer > .footer-wrap > .footer-links {
   margin: auto;
-
 }
 
 .footer > .footer-wrap > .footer-links > li {
