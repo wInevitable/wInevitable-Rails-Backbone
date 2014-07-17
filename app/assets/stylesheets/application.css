@@ -112,11 +112,15 @@ em {
 }
 
 .header > .header-nav > .links > li {
-  cursor: pointer;
   position: relative;
   display: block;
   padding: 5px 20px;
   float: left;
+}
+
+.header > .header-nav > .links > li > a {
+  display: block;
+  cursor: pointer;
 }
 
 .header > .header-nav > .links > li > a:hover {
@@ -556,9 +560,8 @@ em {
 .footer > .footer-wrap > .footer-links > li {
   position: relative;
   cursor: pointer;
-  
-  display: inline-block;
-  padding: 0px 30px;
+  float: left;
+  padding: 0px 50px;
   margin: 20px auto;
 }
 
