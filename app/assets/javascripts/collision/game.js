@@ -13,8 +13,8 @@
   };
 
   Game.NUM_ASTEROIDS = 10;
-  Game.DIM_X = 800;
-  Game.DIM_Y = 600;
+  Game.DIM_X = 1000;
+  Game.DIM_Y = 800;
   Game.FPS = 32;
   Game.COLOR = '#000';
 
@@ -92,7 +92,6 @@
       }
     }
 
-
     this.allObjects().forEach(function(object) {
       object.draw(ctx);
     });
@@ -146,8 +145,6 @@
 
 })(this);
 
-"use strict";
-
 (function (root){
   var StarTrek = root.StarTrek = (root.StarTrek || {});
 
@@ -155,7 +152,9 @@
     function(options) {
       this._id = options._id || Math.random();
       this.pos = options.pos;
+      this.angle = options.angle;
       this.vel = options.vel;
+      this.speed = options.speed;
       this.radius = options.radius;
       this.color = options.color;
       this.game = options.game;
@@ -168,6 +167,7 @@
   MovingObject.prototype.draw = function(ctx) {
     ctx.save();
     ctx.translate(this.pos[0], this.pos[1]);
+    ctx.rotate(this.angle);
     ctx.drawImage(this.image, 0 - this.image.width / 2, 0 - this.image.height / 2);
 
     ctx.restore();
@@ -187,51 +187,56 @@
     // ctx.fill();
   };
 
-   MovingObject.prototype.isCollidedWith = function(otherObject) {
-     var centerDist = StarTrek.Utilities.dist(this.pos, otherObject.pos);
-     return centerDist < (this.radius + otherObject.radius);
-   };
+  MovingObject.prototype.isCollidedWith = function(otherObject) {
+    var centerDist = StarTrek.Utilities.dist(this.pos, otherObject.pos);
+    return centerDist < (this.radius + otherObject.radius);
+  };
 
-   MovingObject.prototype.isWrappable = true;
+  MovingObject.prototype.isWrappable = true;
 
-   MovingObject.prototype.move = function(numTicks) {
-     this.pos = [
-       (this.pos[0] + numTicks * this.vel[0]),
-       (this.pos[1] + numTicks * this.vel[1])
-     ];
+  MovingObject.prototype.move = function(numTicks) {
+    var speed = this.speed;
 
-     if (this.game.isOutOfBounds(this.pos)) {
-       if (this.isWrappable) {
-         this.wrap();
-       }
-       else {
-         this.remove();
-       }
-     }
-   };
+    this.vel[0] = speed * Math.cos(this.angle);
+    this.vel[1] = speed * Math.sin(this.angle);
 
-   MovingObject.prototype.remove = function() {
-     this.game.remove(this)
-   };
+    this.pos = [
+      (this.pos[0] + numTicks * this.vel[0]),
+      (this.pos[1] + numTicks * this.vel[1])
+    ];
 
-   function wrap (coord, max) {
-     if (coord < 0) {
-       return max - (coord % max);
-     }
-     else if (coord > max) {
-       return coord % max;
-     }
-     else {
-       return coord;
-     }
-   };
+    if (this.game.isOutOfBounds(this.pos)) {
+      if (this.isWrappable) {
+        this.wrap();
+      }
+      else {
+        this.remove();
+      }
+    }
+  };
 
-   MovingObject.prototype.wrap = function() {
-     this.pos[0] = wrap(this.pos[0], StarTrek.Game.DIM_X);
-     this.pos[1] = wrap(this.pos[1], StarTrek.Game.DIM_Y);
-   };
+  MovingObject.prototype.remove = function() {
+    this.game.remove(this)
+  };
 
-   // MovingObject.prototype.toJSON - save game feature
+  function wrap (coord, max) {
+    if (coord < 0) {
+      return max - (coord % max);
+    }
+    else if (coord > max) {
+      return coord % max;
+    }
+    else {
+      return coord;
+    }
+  };
+
+  MovingObject.prototype.wrap = function() {
+    this.pos[0] = wrap(this.pos[0], StarTrek.Game.DIM_X);
+    this.pos[1] = wrap(this.pos[1], StarTrek.Game.DIM_Y);
+  };
+
+  // MovingObject.prototype.toJSON - save game feature
 
 })(this);
 
@@ -241,12 +246,16 @@
   var Asteroid = StarTrek.Asteroid = function(options) {
     options.radius = Asteroid.RADIUS;
     options.color = Asteroid.COLOR;
+    options.speed = Asteroid.SPEED;
+    options.angle = Asteroid.ANGLE;
+
     StarTrek.MovingObject.call(this, options);
   };
 
   Asteroid.COLOR = 'red';
   Asteroid.RADIUS = 25;
   Asteroid.SPEED = 4;
+  Asteroid.ANGLE = 0;
 
   Asteroid.randomAsteroid = function(game, image){
     return new Asteroid({
@@ -256,7 +265,6 @@
       image: image
     });
   };
-
 
   StarTrek.inherits = function (ChildClass, BaseClass) {
     function Surrogate () { this.constructor = ChildClass };
@@ -286,6 +294,8 @@
 
    var Ship = StarTrek.Ship = function(options) {
      options.radius = StarTrek.Ship.RADIUS;
+     options.speed = 0;
+     options.angle = 0;
      options.vel = options.vel || [0, 0];
      options.color = options.color || randomColor();
 
@@ -303,15 +313,22 @@
 
    Ship.COLOR = 'Black';
    Ship.RADIUS = 15;
+   Ship.MAX_SPEED = 10;
 
    Ship.prototype.power = function(impulse){
-     this.vel[0] += impulse[0];
-     this.vel[1] += impulse[1];
+    if (Math.abs(this.speed + impulse) <= Ship.MAX_SPEED) {
+      this.speed += impulse;
+    }
+   };
+
+   Ship.prototype.turn = function(rads) {
+    this.angle += rads;
+    this.angle %= 2 * Math.PI;
    };
 
    Ship.prototype.relocate = function() {
      this.pos = this.game.randomPosition();
-     this.vel = [0, 0];
+     this.speed = 0;
    };
 
    Ship.prototype.fireBullet = function() {
@@ -332,8 +349,8 @@
 
        var bullet = new StarTrek.Bullet({
          pos: this.pos,
+         angle: this.angle,
          vel: bulletVel,
-         color: this.color,
          game: this.game,
          image: this.game.images.bullet
        });
@@ -350,13 +367,14 @@
    var Bullet = StarTrek.Bullet = function(options) {
      options.radius = Bullet.RADIUS;
      options.color = Bullet.COLOR;
+     options.speed = Bullet.SPEED;
 
      StarTrek.MovingObject.call(this, options);
    };
 
    Bullet.COLOR = '#fff';
    Bullet.RADIUS = 2;
-   Bullet.SPEED = 15;
+   Bullet.SPEED = 45;
 
    StarTrek.inherits = function (ChildClass, BaseClass) {
      function Surrogate () { this.constructor = ChildClass };
@@ -451,11 +469,16 @@
   GameView.prototype.bindKeyHandlers = function() {
     var ship = this.ship;
 
-    Object.keys(GameView.MOVES).forEach(function(k) {
-      var move = GameView.MOVES[k];
-      key(k, function() { ship.power(move); });
-    });
+    // Object.keys(GameView.MOVES).forEach(function(k) {
+    //   var move = GameView.MOVES[k];
 
+    //   key(k, function() { ship.power(move); });
+    // });
+
+    key('w', function() { ship.power(1) });
+    key('s', function() { ship.power(-1) });
+    key('a', function() { ship.turn(-0.5) });
+    key('d', function() { ship.turn(0.5) });
     key("space", function() { ship.fireBullet() });
   };
 
