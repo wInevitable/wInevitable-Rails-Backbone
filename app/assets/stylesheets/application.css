@@ -118,6 +118,10 @@ em {
   float: left;
 }
 
+.header > .header-nav > .links > li.pro {
+  cursor: pointer;
+}
+
 .header > .header-nav > .links > li > a {
   display: block;
   cursor: pointer;
@@ -561,7 +565,7 @@ em {
   position: relative;
   cursor: pointer;
   float: left;
-  padding: 0px 50px;
+  padding: 0px 60px;
   margin: 20px auto;
 }
 
