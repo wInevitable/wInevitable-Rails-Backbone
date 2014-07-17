@@ -539,7 +539,6 @@ em {
 .footer {
   display: block;
   background: #003264;
-  margin-bottom: 50px;
   bottom: 50px;
   left: 0;
   right: 0;
@@ -559,7 +558,7 @@ em {
   cursor: pointer;
   float: left;
   padding: 0px 30px;
-  margin: 20px 0;
+  margin: 20px auto;
 }
 
 .footer > .footer-wrap > .footer-links > li:not(:last-child) {
