@@ -4,6 +4,15 @@
 
   <script>
     $(document).ready(function() {
+      $('body').keypress(function(event) {
+        var code = event.keyCode;
+        if (code == 32 || code == 65 || code == 68 || code == 83 || code == 87) {
+          event.preventDefault();
+        }
+      });
+    });
+
+    $(document).ready(function() {
       var imagePreloader = new Preloader.ImagePreloader({
         background: '/images/lightspeed.jpg',
         bullet: "/images/laser.png",
