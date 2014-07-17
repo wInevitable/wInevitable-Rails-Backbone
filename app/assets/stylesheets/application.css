@@ -535,7 +535,7 @@ em {
 .footer {
   display: block;
   background: #003264;
-/*  position: absolute;*/
+  margin-bottom: 50px;
   bottom: 50px;
   left: 0;
   right: 0;
