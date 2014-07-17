@@ -557,6 +557,7 @@ em {
   position: relative;
   cursor: pointer;
   float: left;
+  display: block;
   padding: 0px 30px;
   margin: 20px auto;
 }
