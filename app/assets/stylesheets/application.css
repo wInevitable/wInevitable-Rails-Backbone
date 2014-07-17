@@ -542,8 +542,12 @@ em {
 }
 
 .footer > .footer-wrap {
-  width: 600px;
+  width: 800px;
   margin: auto;
+}
+
+.footer > .footer-wrap info {
+  float: right;
 }
 
 .footer > .footer-wrap > .footer-links {
