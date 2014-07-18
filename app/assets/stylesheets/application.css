@@ -462,15 +462,15 @@ em {
   line-height: 2;
 }
 
-.hanoi > .bases .one:hover {
+.hanoi > .bases .one:hover + li {
   background: #fff;
 }
 
-.hanoi > .bases .two:hover {
+.hanoi > .bases .two:hover + li {
   background: #fff;
 }
 
-.hanoi > .bases .three:hover {
+.hanoi > .bases .three:hover + li {
   background: #fff;
 }
 
