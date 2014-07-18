@@ -326,7 +326,7 @@ em {
   width: 600px;
   margin: auto;
   padding: 20px;
-  font-size: 18px;
+  font-size: 24px;
   font-style: italic;
 }
 
@@ -341,7 +341,7 @@ em {
   display: block;
   padding: 20px;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -388,14 +388,14 @@ em {
   display: block;
   padding: 20px 20px 0 20px;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .hanoi > footer > h6 {
   display: block;
   padding: 20px 20px 0 20px;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -456,8 +456,8 @@ em {
   border: 5px solid black;
   float: left;
   text-align: center;
-  font-style: bold;
-  font-size: 40px;
+  font-weight: bold;
+  font-size: 48px;
   line-height: 2;
 }
 
@@ -534,7 +534,7 @@ em {
   display: block;
   padding: 20px 20px 0 20px;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
 }
 
