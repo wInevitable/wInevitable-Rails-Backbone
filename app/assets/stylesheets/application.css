@@ -153,12 +153,12 @@ em {
 }
 
 .header > .header-nav > .links > li > .dropdown > li {
-  cursor: pointer;
-  padding: 10px 20px;
   display: block;
 }
 
 .header > .header-nav > .links > li > .dropdown > li > a {
+  cursor: pointer;
+  padding: 10px 20px;
   display: block;
 }
 
@@ -363,7 +363,7 @@ em {
 .hanoi > header > h1 {
   display: block;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   width: 400px;
   font-size: 48px;
   font-weight: bold;
