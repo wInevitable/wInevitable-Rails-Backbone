@@ -462,17 +462,17 @@ em {
   line-height: 2;
 }
 
-.hanoi > .bases .one:hover li {
+.hanoi > .bases .one:hover{
   cursor: pointer;
   background: #fff;
 }
 
-.hanoi > .bases .two:hover li {
+.hanoi > .bases .two:hover{
   cursor: pointer;
   background: #fff;
 }
 
-.hanoi > .bases .three:hover li {
+.hanoi > .bases .three:hover{
   cursor: pointer;
   background: #fff;
 }
