@@ -347,7 +347,7 @@ em {
 }
 
 .collision > h6 > a {
-    color: #000;
+  color: #000;
 }
 
 /* --- HANOI --- */
@@ -401,7 +401,7 @@ em {
 }
 
 .hanoi > footer > h6 > a {
-    color: #000;
+  color: #000;
 }
 
 .hanoi > .towers {
@@ -460,6 +460,10 @@ em {
   font-weight: bold;
   font-size: 48px;
   line-height: 2;
+}
+
+.hanoi > .bases li:hover {
+  background: #fff;
 }
 
 /* --- TTT --- */
