@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require _.js
 //= require underscore
+//= require jquery-ui
 //= require keymaster
 //= require preloader
 //= require backbone

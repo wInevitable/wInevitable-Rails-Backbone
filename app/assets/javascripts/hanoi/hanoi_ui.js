@@ -69,11 +69,11 @@
           size = "small";
         } else if (disc === 2) {
           size = "medium";
-        } else if (disc ===3) {
+        } else if (disc === 3) {
           size = "large";
         }
 
-        towerSelected.append("<li class=\"" + size + "\"></li>");
+        towerSelected.append("<li class=\"" + size + " interactive\"></li>");
       });
 
       for (var i = tower.length; i < 3; i++){

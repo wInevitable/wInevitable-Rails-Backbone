@@ -5,9 +5,9 @@
 
   <ul class="towers">
     <ul class="one">
-      <li class="small"></li>
-      <li class="medium"></li>
-      <li class="large"></li>
+      <li class="small interactive"></li>
+      <li class="medium interactive"></li>
+      <li class="large interactive"></li>
     </ul>
     <ul class="two">
       <li class="hidden"></li>
@@ -21,9 +21,9 @@
     </ul>
   </ul>
   <ul class="bases">
-      <li class="one">T1</li>
-      <li class="two">T2</li>
-      <li class="three">T3</li>
+      <li class="interactive pointer">T1</li>
+      <li class="interactive pointer">T2</li>
+      <li class="interactive pointer">T3</li>
   </ul>
   <footer>
     <h4>Click on a Tower or Boulder.</h4>
@@ -40,5 +40,9 @@
     $(".hanoi li").each(function(index, block) {
       new Hanoi.HanoiUI(game, block, index).installClickListener();
     });
+
+    // $("#sort1, #sort2, #sort3").sortable({
+    //   connectWith: ".connected"
+    // }).disableSelection();
   });
 </script>
