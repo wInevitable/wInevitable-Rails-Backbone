@@ -1,21 +1,12 @@
 development:
   adapter: postgresql
-  database: name_of_your_project_development
+  database: wInevitable_development
   host: localhost
-  username: appacademy
+  username: CaptainAmerica
 
 test:
   adapter: postgresql
   encoding: unicode
   database: wInevitable_test
   pool: 5
-  username: appacademy
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: wInevitable_production
-  pool: 5
-  username: appacademy
-  password:
+  username: CaptainAmerica
