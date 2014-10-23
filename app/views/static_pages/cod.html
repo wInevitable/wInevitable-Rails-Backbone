@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MLG Call of Duty: Advanced Warfare Pro League</title>
+  <style>
+		html, body, section, div, ul, li {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font: inherit;
+			vertical-align: baseline;
+		}
+
+		body {
+		  background-image: url("img/bg.png");
+		  background-repeat: no-repeat;
+		}
+
+		/* --- Elements --- */
+		.container {
+			height: 300px;
+			width: 1920px;
+			margin-top: 100px;
+		}
+
+		.draggable li {
+			list-style-type: none;
+			float: left;
+			width: 205px;
+			height: 75px;
+			margin: 5px;
+		}
+
+		.temporary {
+			background-color: rgba(192,192,192,0.6);
+		}
+
+		.placeholder {
+			list-style-type: none;
+			float: left;
+			width: 205px;
+			height: 75px;
+			margin: 5px;
+			background-color: transparent;
+		}
+
+		.dragme {
+			cursor: pointer;
+		}
+
+		.drop-hover {
+			background-color: rgba(192,192,192,0.4);
+		}
+
+		.container > ul {
+			float: left;
+		}
+
+		.picks {
+			width: 520px;
+			margin-top: 30px;
+		}
+
+		.picks > ul {
+			float: left;
+			width: 200px;
+			height: 75px;
+			margin-left: 20px;
+			margin-bottom: 10px;
+		}
+
+		.picks > .first {
+			margin-left: 85px
+		}
+
+		.pool {
+			width: 880px;
+			height: 250px;
+			margin-top: 40px;
+		}
+
+		.pool > li {
+			margin-left: 10px;
+		}
+
+		.vetoes {
+			margin-top: 10px;
+			width: 260px;
+			height: 250px;
+		}
+
+		.team-1 > li {
+			margin-left: 35px;
+		}
+
+		.team-2 > li {
+			margin-left: 20px;
+		}
+
+		/* --- MAP TILES --- */
+		.blitz-freight  { background-image: url("img/lite-maps/blitz-freight.jpg"); }
+		.blitz-octane   { background-image: url("img/lite-maps/blitz-octane.jpg"); }
+		.blitz-warhawk  { background-image: url("img/lite-maps/blitz-warhawk.jpg"); }
+		.dom-freight    { background-image: url("img/lite-maps/dom-freight.jpg"); }
+		.dom-octane     { background-image: url("img/lite-maps/dom-octane.jpg"); }
+		.dom-sovereign  { background-image: url("img/lite-maps/dom-sovereign.jpg"); }
+		.dom-strikezone { background-image: url("img/lite-maps/dom-strikezone.jpg"); }
+		.snd-freight    { background-image: url("img/lite-maps/snd-freight.jpg"); }
+		.snd-octane     { background-image: url("img/lite-maps/snd-octane.jpg"); }
+		.snd-sovereign  { background-image: url("img/lite-maps/snd-sovereign.jpg"); }
+		.snd-warhawk    { background-image: url("img/lite-maps/snd-warhawk.jpg"); }
+
+		/* --- TEAM LOGOS --- */
+
+		.team-logo {
+			float: left;
+			width: 205px;
+			height: 40px;
+			color: #fff;
+			text-align: center;
+			margin-left: 35px;
+			cursor: pointer;
+		}
+
+		.team-logo2 {
+			margin-left: 40px;
+		}
+
+		.default { background-image: url("img/logos/default.png"); }
+		.denial { background-image: url("img/logos/denial.png"); }
+		.envy { background-image: url("img/logos/envy.png"); }
+		.faze { background-image: url("img/logos/faze.png"); }
+		.mostwanted { background-image: url("img/logos/mostwanted.png"); }
+		.noble { background-image: url("img/logos/noble.png"); }
+		.off { background-image: url("img/logos/off.png"); }
+		.og { background-image: url("img/logos/og.png"); }
+		.on { background-image: url("img/logos/on.png"); }
+		.rise { background-image: url("img/logos/rise.png"); }
+	</style>
+	<script src="javascripts/jquery.js"></script>
+	<script src="javascripts/jquery-ui.min.js"></script>
+	<script src="javascripts/jquery-ui.js"></script>
+	<script src="javascripts/selection.js"></script>
+	<script src="javascripts/logo.js"></script>
+</head>
+<body bgcolor="black">
+	<section class="map-selections">
+		<div class="container draggable">
+			<ul class="picks">
+				<ul class="sortable highlight first" id="1"></ul>
+				<ul class="sortable highlight" id="4"></ul>
+				<ul class="sortable highlight first" id="2"></ul>
+				<ul class="sortable highlight" id="5"></ul>
+				<ul class="sortable highlight first" id="3"></ul>
+			</ul>
+			<ul class="pool sortable highlight">
+				<li class="blitz-freight dragme" data-number="0"></li>
+				<li class="blitz-octane dragme" data-number="1"></li>
+				<li class="blitz-warhawk dragme" data-number="2"></li>
+				<li class="dom-freight dragme" data-number="3"></li>
+				<li class="dom-octane dragme" data-number="4"></li>
+				<li class="dom-sovereign dragme" data-number="5"></li>
+				<li class="dom-strikezone dragme" data-number="6"></li>
+				<li class="snd-freight dragme" data-number="7"></li>
+				<li class="snd-octane dragme" data-number="8"></li>
+				<li class="snd-sovereign dragme" data-number="9"></li>
+				<li class="snd-warhawk dragme" data-number="10"></li>
+			</ul>
+			<div class="team-logo" id="1" data-number="1"></div>
+			<div class="team-logo team-logo2" id="2" data-number="2"></div>
+			<ul class="vetoes team-1 sortable highlight"></ul>
+			<ul class="vetoes team-2 sortable highlight"></ul>
+		</div>
+	</section>
+</body>
+</html>
