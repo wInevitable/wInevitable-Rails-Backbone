@@ -1,5 +1,4 @@
 (function(root) {
-
   var TTT = root.TTT = (root.TTT || {});
 
   TTTUI = TTT.TTTUI = function(game, domEl, index) {
@@ -30,5 +29,4 @@
       }
     }
   };
-
 })(this);

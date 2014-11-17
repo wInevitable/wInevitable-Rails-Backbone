@@ -1,3 +1,1 @@
-wInevitable.Models.Model = Backbone.Model.extend({
-
-});
+wInevitable.Models.Model = Backbone.Model.extend({});

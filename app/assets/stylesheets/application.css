@@ -81,9 +81,7 @@ em {
 
 /* --- HEADER --- */
 
-.header {
-
-}
+.header {}
 
 .header > .header-nav {
   position: relative;

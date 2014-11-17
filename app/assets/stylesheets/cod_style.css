@@ -1,0 +1,128 @@
+html, body, section, div, ul, li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* --- Elements --- */
+.container {
+	height: 300px;
+	width: 1920px;
+	margin-top: 100px;
+}
+
+.draggable li {
+	list-style-type: none;
+	float: left;
+	width: 205px;
+	height: 75px;
+	margin: 5px;
+}
+
+.temporary {
+	background-color: rgba(192,192,192,0.6);
+}
+
+.placeholder {
+	list-style-type: none;
+	float: left;
+	width: 205px;
+	height: 75px;
+	margin: 5px;
+	background-color: transparent;
+}
+
+.dragme {
+	cursor: pointer;
+}
+
+.drop-hover {
+	background-color: rgba(192,192,192,0.4);
+}
+
+.container > ul {
+	float: left;
+}
+
+.picks {
+	width: 520px;
+	margin-top: 30px;
+}
+
+.picks > ul {
+	float: left;
+	width: 200px;
+	height: 75px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.picks > .first {
+	margin-left: 85px
+}
+
+.pool {
+	width: 880px;
+	height: 250px;
+	margin-top: 40px;
+}
+
+.pool > li {
+	margin-left: 10px;
+}
+
+.vetoes {
+	margin-top: 10px;
+	width: 260px;
+	height: 250px;
+}
+
+.team-1 > li {
+	margin-left: 35px;
+}
+
+.team-2 > li {
+	margin-left: 20px;
+}
+
+/* --- MAP TILES --- */
+.blitz-freight  { background-image: url("lite-maps/blitz-freight.jpg"); }
+.blitz-octane   { background-image: url("lite-maps/blitz-octane.jpg"); }
+.blitz-warhawk  { background-image: url("lite-maps/blitz-warhawk.jpg"); }
+.dom-freight    { background-image: url("lite-maps/dom-freight.jpg"); }
+.dom-octane     { background-image: url("lite-maps/dom-octane.jpg"); }
+.dom-sovereign  { background-image: url("lite-maps/dom-sovereign.jpg"); }
+.dom-strikezone { background-image: url("lite-maps/dom-strikezone.jpg"); }
+.snd-freight    { background-image: url("lite-maps/snd-freight.jpg"); }
+.snd-octane     { background-image: url("lite-maps/snd-octane.jpg"); }
+.snd-sovereign  { background-image: url("lite-maps/snd-sovereign.jpg"); }
+.snd-warhawk    { background-image: url("lite-maps/snd-warhawk.jpg"); }
+
+/* --- TEAM LOGOS --- */
+
+.team-logo {
+	float: left;
+	width: 205px;
+	height: 40px;
+	color: #fff;
+	text-align: center;
+	margin-left: 35px;
+	cursor: pointer;
+}
+
+.team-logo2 {
+	margin-left: 40px;
+}
+
+.default { background-image: url("logos/default.png"); }
+.denial { background-image: url("logos/denial.png"); }
+.envy { background-image: url("logos/envy.png"); }
+.faze { background-image: url("logos/faze.png"); }
+.mostwanted { background-image: url("logos/mostwanted.png"); }
+.noble { background-image: url("logos/noble.png"); }
+.off { background-image: url("logos/off.png"); }
+.og { background-image: url("logos/og.png"); }
+.on { background-image: url("logos/on.png"); }
+.rise { background-image: url("logos/rise.png"); }

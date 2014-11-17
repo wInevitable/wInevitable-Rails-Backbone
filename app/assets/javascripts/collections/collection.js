@@ -1,2 +1,1 @@
-wInevitable.Collections.Collection = Backbone.Collection.extend({
-});
+wInevitable.Collections.Collection = Backbone.Collection.extend({});

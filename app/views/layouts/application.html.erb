@@ -7,31 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
     <%= render partial: 'shared/header' %>
 
     <%= yield %>
 
     <%= render partial: 'shared/footer' %>
 
-  <script>
-    $(document).ready(function() {
-
-      $('.pro').click(function() {
-        $('.dropdown').addClass('show');
-      });
-
-      $('body').click(function(event){
-        var className = event.target.className.split(" ")[1];
-        if (className != "sticky") {
-          $('.dropdown').removeClass('show');
-        }
-      });
-
-      $('.email').hover(function() {
-        $('.email-pop-up').toggleClass('email-show');
-      });
-    });
-  </script>
+	  <%= javascript_include_tag "uiControls" %>
 </body>
 </html>
